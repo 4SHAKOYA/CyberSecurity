@@ -11,14 +11,11 @@ These files have been tested and used to generate a live ELK deployment on Azure
 In order to install the **ELK Server** you will need to execute this YAML script:
   - [ELK Server](https://github.com/rmiller715/Cybersecurity-Bootcamp-Project-1/blob/master/Ansible/Install-ELK.yml)
 
-##### Filebeat
-      then in order to configure the ELK Server to collect data regarding file activity you have to **configure the ELK server** using this YAML file:
-
+    ##### Filebeat
+    In order to configure the ELK Server to collect data regarding file activity you have to **configure the ELK server** be executing this YAML file:
       - **[Filebeat Config File]**(https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-config.yml)
-
-        then execute the following script to configure the web servers to report files changes to the ELK Server:
- 
-       - **[Filebeat Playbook]**(https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
+    Once configured you then need to *execute the following script* so that the other servers are configured to report changes to the ELK server.
+      - **[Filebeat Playbook]**(https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
 
 ##### Metricbeat
 In order to configure the ELK Server to collect data regarding performance metrics you first have to **configure** the ELK server using the following YAML file:
