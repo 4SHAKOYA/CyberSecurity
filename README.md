@@ -14,11 +14,11 @@ In order to install the **ELK Server** you will need to execute this YAML script
     ##### Filebeat
     In order to configure the ELK Server to collect data regarding file activity you have to **configure the ELK server** be executing this YAML file:
     
-      - **[Filebeat Config File]**(https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-config.yml)
+      - [Filebeat Config File](https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-config.yml)
     
     Once configured you then need to *execute the following script* so that the other servers are configured to report changes to the ELK server.
     
-      - **[Filebeat Playbook]**(https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
+      - [Filebeat Playbook](https://github.com/4SHAKOYA/CyberSecurity/blob/main/Ansible/filebeat-playbook.yml)
 
 ##### Metricbeat
 In order to configure the ELK Server to collect data regarding performance metrics you first have to **configure** the ELK server using the following YAML file:
