@@ -116,8 +116,9 @@ This ELK server is configured to monitor the following machines:
 
 We have installed the following Beats on these machines:
 
--**Filebeat**
--**Metricbeat**
+- **Filebeat**
+
+- **Metricbeat**
 
 These Beats allow us to collect the following information from each machine:
 
@@ -156,5 +157,12 @@ Once the **Filebeat** playbook has been successfully executed against all of the
 
 Once the **Metricbeat** playbook has been successfully executed against all of the machines you can check **http://***[Elk Server IP Address]**:5601/app/kibana#/dashboard/AV4REOpp5NkDleZmzKkE-ecs** to see the metric and performance statistics.
 
+In order to run the **Filebeat YAML Ansible Playbook** you would type the following from the **Jump Box Server**:
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+![](https://github.com/4SHAKOYA/CyberSecurity/blob/main/Diagrams/filebeat-playbook.png)
+
+In order to run the **Metricbeat YAML Ansible Playbook** you would type the following from the **Jump Box Server**:
+
+![](https://github.com/4SHAKOYA/CyberSecurity/blob/main/Diagrams/metricbeat-playbook.png)
+
+
