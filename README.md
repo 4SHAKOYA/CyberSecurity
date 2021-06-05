@@ -136,10 +136,10 @@ SSH into the control node and follow the steps below:
 
 The YAML configuration file (**filebeat-config.yml** and **metricbeat-config.yml**) are copied from the **/etc/ansible/files/** folders under the **Ansible control node** to the **/etc/***[Beat Folder Name]***/***[Beat Name]***.yml**. 
 
-        | Beat Name  | Beat Source Directory Name               | Beat Destination Directory and Name |
-        |------------|------------------------------------------|-------------------------------------|
-        | Filebeat   | /etc/ansible/files/filebeat-config.yml   | /etc/filebeat/filebeat.yml          |
-        | Metricbeat | /etc/ansible/files/metricbeat-config.yml | /etc/metricbeat/metricbeat.yml      |
+| Beat Name  | Beat Source Directory Name               | Beat Destination Directory and Name |
+|------------|------------------------------------------|-------------------------------------|
+| Filebeat   | /etc/ansible/files/filebeat-config.yml   | /etc/filebeat/filebeat.yml          |
+| Metricbeat | /etc/ansible/files/metricbeat-config.yml | /etc/metricbeat/metricbeat.yml      |
 
 In order for **Ansible** to understand which virtual computers it should execute the playbook against they need to be configured within the **hosts** within the /etc/ansible/ folder.  Inside the hosts file you will need to specify a header value (in our case it is [**[[webservers]]**]) and list all the IP addresses of the virtual computers. 
 
