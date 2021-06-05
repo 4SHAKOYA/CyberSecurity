@@ -135,6 +135,7 @@ SSH into the control node and follow the steps below:
 - Run the playbook, and navigate to **http://***[Elk Server IP Address]***:5061/app/kibana** to check that the installation worked as expected.
 
 The YAML configuration file (**filebeat-config.yml** and **metricbeat-config.yml**) are copied from the **/etc/ansible/files/** folders under the **Ansible control node** to the **/etc/***[Beat Folder Name]***/***[Beat Name]***.yml**. 
+
         | Beat Name  | Beat Source Directory Name               | Beat Destination Directory and Name |
         |------------|------------------------------------------|-------------------------------------|
         | Filebeat   | /etc/ansible/files/filebeat-config.yml   | /etc/filebeat/filebeat.yml          |
