@@ -45,9 +45,9 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly **available**, in addition to restricting **access** to the network.  By using a jump box (essentially a virtual machine) provisioned with a software based container product such as docker along with the use of load balancing services make it easy to quickly manage and deploy virtual machines that have been preconfigured and provisioned with their specific roles and needs (such as in this case of the DVWA web servers).  This aids the administrator in offering the abilityto bring more virtual servers online or shutdown as the needs arise.  Additionally, this functionality also gives the administrator the ability to update and apply the most recent application and security updates to a single image while still having the sevices available to the end user.
+Load balancing ensures that the application will be highly **available**, in addition to restricting **access** to the network.  By using a jump box (essentially a virtual machine) provisioned with a software-based container product such as docker along with the use of load balancing services make it easy to quickly manage and deploy virtual machines that have been preconfigured and provisioned with their specific roles and needs (such as in this case of the DVWA web servers).  This aids the administrator in offering the ability to bring more virtual servers online or shutdown as the needs arise.  Additionally, this functionality also gives the administrator the ability to update and apply the most recent application and security updates to a single image while still having the sevices available to the end user.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the **files, event logs** and system **metrics**.  By using software applications and services such as **Filebeat** and **Metricbeat** allow other computers to send messages and notifications to the ELK server when specific conditions have been meet.  For instance **Filebeat** *can be configured to watch for changes to any (or specific) files* and/or when *new files are created*. **Metricbeat** is a product similar in nature to Filebeat except that instead of notifying the ELK server with file information it sends through information about the *performance* (or metrics) of the virtual server itself.  Information such **CPU Utilization, disk usage and available memory** are important for the system andministrators to determine if there is a problem with the services/server or if the server is being simple being overwhelmed and more servers need to be brought online.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the **files, event logs** and system **metrics**.  By using software applications and services such as **Filebeat** and **Metricbeat** allow other computers to send messages and notifications to the ELK server when specific conditions have been met.  For instance **Filebeat** *can be configured to watch for changes to any (or specific) files* and/or when *new files are created*. **Metricbeat** is a product similar in nature to Filebeat except that instead of notifying the ELK server with file information it sends through information about the *performance* (or metrics) of the virtual server itself.  Information such **CPU Utilization, disk usage and available memory** are important for the system administrators to determine if there is a problem with the services/server or if the server is being simple being overwhelmed and more servers need to be brought online.
 
 The configuration details of each machine may be found below.
 
@@ -68,7 +68,7 @@ The machines on the internal network are not exposed to the public Internet.
 
 The **Jump Box Provisioner** machine can accept **SSH** connections from the Internet. Access to this machine is only allowed from **my personal IP address**. The **ELK Server** machine can accept **HTTP** connections from the Internet. Access to this machine is restricted to only allow connectivity from **my personal IP address**. Only the **Load Balancer** can accept connections from the internet and access is restricted to **TCP on port 80**.
 
-Machines within the network can only be accessed by **other machines in the same local network** or **any networks which are set up with peerless mode**.  Only the **Jump Box Provisioner** machine can access the **ELK Server** virual machine from its local IP address which is **10.1.0.4**.
+Machines within the network can only be accessed by **other machines in the same local network** or **any networks which are set up with peerless mode**.  Only the **Jump Box Provisioner** machine can access the **ELK Server** virtual machine from its local IP address which is **10.1.0.4**.
 
 
 A summary of the access policies in place can be found in the table below.
@@ -96,7 +96,7 @@ the master image ensuring that it is always up to date.
 The playbook implements the following tasks:
 - Sets the virtual computer memory to be large enough to ensure that Ansible would be able to run correctly
 - Installs Docker.io using the apt-install command and ensure the service runs automatically even if the computer restarts.
-- Installs the Phython (version 3) programming language and interputer using the apt-install command and also ensures that the interputer it will restart automatically.
+- Installs the Python (version 3) programming language and interrupter using the apt-install command and also ensures that the interrupter it will restart automatically.
 - It then downloads a docker container which is an image of a virtual computer which has already been defined and available for download from a given source (in this case from the public internet).
 - It then configures the docker container to allow connectivity on specific ports and starts and ensures that the docker service is running and will automatically restart if the computer does.
 
@@ -124,15 +124,15 @@ These Beats allow us to collect the following information from each machine:
 
 - **Filebeat** is a service which monitors and collects data by analyzing logs, files and file structures and forwards this information to the ELK server where either Elasticsearch or Logstash will save this information.  It can then be queried and a notification can be generated or the data can be queried and reported on at a later date.
 
-- **Metricbeat** is a service which monitors and collects performance data of the virtual computer.  Data based on defined "Health" metrics such as CPU performance, available memory and other factors are sent to the ELK server where it can either create an alert notification or can be queried and reported in the same manner as the filebeats component.
+- **Metricbeat** is a service which monitors and collects performance data of the virtual computer.  Data based on defined "Health" metrics such as CPU performance, available memory and other factors are sent to the ELK server where it can either create an alert notification or can be queried and reported in the same manner as the Filebeat component.
 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the **appropriate YAML configuration** *(eg Filebeat is filebeat-config.yml)* file to the **/etc/** folder followed by the correct Beat folder name (e.g. filebeat = **/etc/filebeat/**)
-- Update the **hosts** file to include the **IP Address** along with the version of *Python interputer* under the named servers section.  In our case **[webservers]**.
+- Copy the **appropriate YAML configuration** *(e.g. Filebeat is filebeat-config.yml)* file to the **/etc/** folder followed by the correct Beat folder name (e.g. filebeat = **/etc/filebeat/**)
+- Update the **hosts** file to include the **IP Address** along with the version of *Python interrupter* under the named server's section.  In our case **[webservers]**.
 - Run the playbook, and navigate to **http://***[Elk Server IP Address]***:5061/app/kibana** to check that the installation worked as expected.
 
 The YAML configuration file (**filebeat-config.yml** and **metricbeat-config.yml**) are copied from the **/etc/ansible/files/** folders under the **Ansible control node** to the **/etc/***[Beat Folder Name]***/***[Beat Name]***.yml**. 
