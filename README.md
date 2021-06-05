@@ -114,26 +114,46 @@ This ELK server is configured to monitor the following machines:
 | Web2          |           10.1.0.6           |
 | Web3          |           10.1.0.8           |
 
- _TODO: List the IP addresses of the machines you are monitoring_
-
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+
+-**Filebeat**
+-**Metricbeat**
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+
+- **Filebeat** is a service which monitors and collects data by analyzing logs, files and file structures and forwards this information to the ELK server where either Elasticsearch or Logstash will save this information.  It can then be queried and a notification can be generated or the data can be queried and reported on at a later date.
+
+- **Metricbeat** is a service which monitors and collects performance data of the virtual computer.  Data based on defined "Health" metrics such as CPU performance, available memory and other factors are sent to the ELK server where it can either create an alert notification or can be queried and reported in the same manner as the filebeats component.
 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the **appropriate YAML configuration** *(eg Filebeat is filebeat-config.yml)* file to the **/etc/** folder followed by the correct Beat folder name (e.g. filebeat = **/etc/filebeat/**)
+- Update the **hosts** file to include the **IP Address** along with the version of *Python interputer* under the named servers section.  In our case **[webservers]**.
+- Run the playbook, and navigate to **http://***[Elk Server IP Address]***:5061/app/kibana** to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+The YAML configuration file (**filebeat-config.yml** and **metricbeat-config.yml**) are copied from the **/etc/ansible/files/** folders under the **Ansible control node** to the **/etc/***[Beat Folder Name]***/***[Beat Name]***.yml**. 
+        | Beat Name  | Beat Source Directory Name               | Beat Destination Directory and Name |
+        |------------|------------------------------------------|-------------------------------------|
+        | Filebeat   | /etc/ansible/files/filebeat-config.yml   | /etc/filebeat/filebeat.yml          |
+        | Metricbeat | /etc/ansible/files/metricbeat-config.yml | /etc/metricbeat/metricbeat.yml      |
+
+In order for **Ansible** to understand which virtual computers it should execute the playbook against they need to be configured within the **hosts** within the /etc/ansible/ folder.  Inside the hosts file you will need to specify a header value (in our case it is [**[[webservers]]**]) and list all the IP addresses of the virtual computers. 
+
+        [webservers]
+        10.1.0.5 ansible_python_interpreter=/usr/bin/python3
+        10.1.0.6 ansible_python_interpreter=/usr/bin/python3
+        10.1.0.8 ansible_python_interpreter=/usr/bin/python3
+
+        [elk]
+        10.2.0.4 ansible_python_interpreter=/usr/bin/python3
+
+
+Once the **Filebeat** playbook has been successfully executed against all of the machines you can check **http://***[Elk Server IP Address]**:5601/app/kibana#/dashboard/Filebeat-syslog-dashboard-ecs** to see the system logs.
+
+Once the **Metricbeat** playbook has been successfully executed against all of the machines you can check **http://***[Elk Server IP Address]**:5601/app/kibana#/dashboard/AV4REOpp5NkDleZmzKkE-ecs** to see the metric and performance statistics.
+
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
