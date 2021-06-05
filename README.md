@@ -94,9 +94,11 @@ the master image ensuring that it is always up to date.
 
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Sets the virtual computer memory to be large enough to ensure that Ansible would be able to run correctly
+- Installs Docker.io using the apt-install command and ensure the service runs automatically even if the computer restarts.
+- Installs the Phython (version 3) programming language and interputer using the apt-install command and also ensures that the interputer it will restart automatically.
+- It then downloads a docker container which is an image of a virtual computer which has already been defined and available for download from a given source (in this case from the public internet).
+- It then configures the docker container to allow connectivity on specific ports and starts and ensures that the docker service is running and will automatically restart if the computer does.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -104,13 +106,21 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+
+| Name          |          IP Address          |
+|---------------|:----------------------------:|
+| Web1          |           10.1.0.5           |
+| Web2          |           10.1.0.6           |
+| Web3          |           10.1.0.8           |
+
+ _TODO: List the IP addresses of the machines you are monitoring_
 
 We have installed the following Beats on these machines:
 - _TODO: Specify which Beats you successfully installed_
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
